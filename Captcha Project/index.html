@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Captcha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="captcha-container">
+    <div class="slider-container">
+        <input type="range" id="captcha-slider" min="0" max="100" value="0">
+        <!-- label moved upward by 100px via CSS -->
+        <label for="captcha-slider" id="slider-label">slide to give us all your info</label>
+    </div>
+
+    <div class="settings">
+        <label><input type="checkbox" id="opt1" checked> give us access to your children</label><br>
+        <label><input type="checkbox" id="opt2" checked> give us access to your deepest secrets</label><br>
+        <label><input type="checkbox" id="opt3" checked> give us access to test neuralink on your brain</label>
+    </div>
+</div>
+
+<!-- modal that appears when someone tries to turn off an option -->
+<div id="alert-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <img src="Img/Zuck.webp" alt="Zuck" id="zuck-img">
+        <p id="modal-text">I'm afraid I can't do that</p>
+    </div>
+</div>
+
+<script>
+// show modal
+function showModal() {
+    var modal = document.getElementById('alert-modal');
+    modal.style.display = 'block';
+}
+
+// hide modal when clicking the close button or outside
+window.onload = function() {
+    var closeBtn = document.getElementById('close-modal');
+    closeBtn.onclick = function() {
+        document.getElementById('alert-modal').style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        var modal = document.getElementById('alert-modal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+    // attach listeners to checkboxes
+    ['opt1', 'opt2', 'opt3'].forEach(function(id) {
+        var cb = document.getElementById(id);
+        cb.addEventListener('change', function(e) {
+            if (!cb.checked) {
+                // prevent turning off and show appropriate image
+                cb.checked = true;
+                var img = document.getElementById('zuck-img');
+                if (id === 'opt3') {
+                    img.src = 'Img/elon-musk-ai.jpg';
+                } else if (id === 'opt2') {
+                    img.src = 'Img/hq720.jpg';
+                } else {
+                    img.src = 'Img/Zuck.webp';
+                }
+                showModal();
+            }
+        });
+    });
+
+    // slider behaviour
+    var slider = document.getElementById('captcha-slider');
+    slider.addEventListener('input', function() {
+        var label = document.getElementById('slider-label');
+        if (slider.value >= 100) {
+            label.textContent = 'We already had it all but thanks anyway';
+            slider.disabled = true;
+        }
+    });
+};
+</script>
+
+</body>
+</html>

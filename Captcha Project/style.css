@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'Gtek Technology';
+}
+
+/* ensure every element uses the Gtek Technology face */
+* {
+    font-family: 'Gtek Technology', sans-serif;
+}
+
+body {
+    font-family: 'Gtek Technology', sans-serif;
+    background: url('Img/Eye.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: red;
+}
+
+
+.captcha-container {
+    /* use slider-inspired look rather than full captcha image */
+    background: #f9f9f9;
+    padding: 2rem;
+    border: 3px dashed #666;
+    border-radius: 4px;
+    width: 320px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    color: red;
+    text-align: center;
+    position: relative;
+}
+
+/* slider-inspired decorations */
+.slider-container {
+    background: repeating-linear-gradient(135deg, #ccc 0, #ccc 2px, transparent 2px, transparent 4px);
+    padding: 1rem;
+    border: 2px solid #999;
+    border-radius: 8px;
+}
+
+#captcha-slider {
+    appearance: none;
+    background: #eee;
+    height: 20px;
+    border: 1px solid #999;
+}
+
+#captcha-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background: #bbb;
+    cursor: pointer;
+    border: 1px solid #888;
+}
+
+#captcha-slider::-moz-range-thumb {
+    width: 40px;
+    height: 20px;
+    background: #bbb;
+    cursor: pointer;
+    border: 1px solid #888;
+}
+
+.slider-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+    height: 80px; /* make box larger */
+}
+
+
+#captcha-slider {
+    width: 100%;
+    height: 40px; /* taller rectangular thumb */
+    border-radius: 0; /* rectangular */
+}
+
+#slider-label {
+    position: absolute;
+    top: -100px; /* move upward by 100px */
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+#modal-text {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.settings label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: #fff;
+    margin: 15% auto;
+    padding: 1rem;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+#close-modal {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#zuck-img {
+    max-width: 100%;
+    height: auto;
+}
